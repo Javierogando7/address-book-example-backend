@@ -2,8 +2,6 @@ package com.example.app.address;
 
 import javax.persistence.*;
 
-import com.example.app.client.Client;
-
 @Entity
 @Table
 public class Address {
@@ -14,16 +12,21 @@ public class Address {
 	private String country;
 	private String city;
 	private String details;
+	private Long clientId;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "client_id", nullable = false)
-	private Client client;
+	public Long getClientId() {
+		return clientId;
+	}
 
-	public long getId() {
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -49,14 +52,6 @@ public class Address {
 
 	public void setDetails(String details) {
 		this.details = details;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
 	}
 
 }

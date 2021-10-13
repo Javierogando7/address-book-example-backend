@@ -1,9 +1,6 @@
 package com.example.app.client;
 
-import java.util.*;
 import javax.persistence.*;
-
-import com.example.app.address.Address;
 
 @Entity
 @Table
@@ -16,9 +13,6 @@ public class Client {
 	private String name;
 	
 	private String phoneNumber;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "client")
-	private Set<Address> addresses = new HashSet<>();
 
 	public Client() {
 	};
@@ -45,13 +39,5 @@ public class Client {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Set<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
 	}
 }

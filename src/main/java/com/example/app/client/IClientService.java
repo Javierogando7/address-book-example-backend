@@ -18,7 +18,9 @@ public interface IClientService {
 
 	public boolean clientExistsById(Long id);
 	
+	List<Address> getAllAddressFromClient(Long clientId);
+
 	public void addAddress(Long clientId, Address address);
-	
+
 	public void deleteAddress(Long clientId, Long addressId);
 }

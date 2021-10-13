@@ -38,6 +38,11 @@ public class ClientController {
 	public void deleteClient(@PathVariable("clientId") Long clientId) {
 		clientService.deleteClient(clientId);
 	}
+	
+	@GetMapping("{clientId}/address")
+	public List<Address> getAllAdreesses(@PathVariable("clientId") String clientId) {
+		return clientService.getAllAddressFromClient(Long.parseLong(clientId));
+	}
 
 	@PostMapping("{clientId}/address")
 	public void addAddress(@PathVariable("clientId") Long clientId, @RequestBody Address address) {
@@ -45,7 +50,7 @@ public class ClientController {
 	}
 
 	@DeleteMapping("{clientId}/address/{addressId}")
-	public void addAddress(@PathVariable("clientId") Long clientId, @PathVariable("clientId") Long addressId) {
+	public void addAddress(@PathVariable("clientId") Long clientId, @PathVariable("addressId") Long addressId) {
 		clientService.deleteAddress(clientId, addressId);
 	}
 }
